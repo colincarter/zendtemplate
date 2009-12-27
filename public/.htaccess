@@ -1,0 +1,15 @@
+SetEnv APPLICATION_ENV development
+
+#
+# Set some limits for file uploading
+# post_max_size should be >= upload_max_filesize
+#
+php_value upload_max_filesize 320M
+php_value post_max_size 320M
+
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^.*$ - [NC,L]
+RewriteRule ^.*$ index.php [NC,L]
